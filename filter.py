@@ -22,8 +22,8 @@ class DoubleExponentialFilter(object):
 				# Get the vector magnitude of the differences
 				diff_magn = np.linalg.norm(prev_diff,axis=1)
 				filt_idcs = np.where(diff_magn <= 0.05)
-				y[i,filt_idcs[0]] = np.multiply(y[i,filt_idcs[0]], (diff_magn[filt_idcs].reshape(-1,1)/0.03)) + \
-									np.multiply(y[i-1,filt_idcs[0]],1-(diff_magn[filt_idcs].reshape(-1,1)/0.03))
+				y[i,filt_idcs[0]] = np.multiply(y[i,filt_idcs[0]], (diff_magn[filt_idcs].reshape(-1,1)/0.05)) + \
+									np.multiply(y[i-1,filt_idcs[0]],1-(diff_magn[filt_idcs].reshape(-1,1)/0.05))
 				
 		
 			s_t = self.alpha * y[i] + (1 - self.alpha) * (prev_s + prev_b)
